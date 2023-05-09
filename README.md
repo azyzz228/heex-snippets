@@ -10,7 +10,7 @@ This extensions works great in conjunction with `emmet`. Here is the [link](http
 
 Snippet suggestions are triggered after `;`, so to use the snippets, simply type in `;<snippet>` and there will be VSCODE auto suggestion with the snippet.
 
-![](https://github.com/azyzz228/html-in-h-sigil/blob/main/assets/sample.gif)
+![](https://github.com/azyzz228/heex-snippets/blob/main/assets/suggestions_after_trigger_character.png)
 
 ## Available snippets
 
