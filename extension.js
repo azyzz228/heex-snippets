@@ -1,7 +1,7 @@
 const vscode = require("vscode");
 
 function activate(context) {
-	console.log("Elixir snippets extension activated");
+	console.log("HEEx-Snippets: snippets extension activated");
 
 	context.subscriptions.push(
 		vscode.languages.registerCompletionItemProvider(
