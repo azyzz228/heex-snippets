@@ -1,36 +1,60 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+const { SnippetString } = require('vscode');
 const vscode = require('vscode');
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-
-/**
- * @param {vscode.ExtensionContext} context
- */
 function activate(context) {
+  console.log('Elixir snippets extension activated');
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "heex-snippets-in-h-sigil" is now active!');
+  // Register a completion provider for the `~H"""` sigil
+  context.subscriptions.push(
+    vscode.languages.registerCompletionItemProvider(
+      'elixir',
+      {
+        provideCompletionItems(document, position, token, context) {
+          // Check if the current position is inside a `~H"""` sigil
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('heex-snippets-in-h-sigil.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
+		  			// a completion item that inserts its text as snippet,
+			// the `insertText`-property is a `SnippetString` which will be
+			// honored by the editor.
+			const snippetCompletion = new vscode.CompletionItem('Good part of the day');
+			snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from heex snippets in h sigil!');
-	});
+			const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
+			snippetCompletion.documentation = docs;
+			docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
+			snippetCompletion.detail = "qweqwewqasdjknaskjdne"
 
-	context.subscriptions.push(disposable);
+			const snippetCompletion2 = new vscode.CompletionItem('divfl', vscode.CompletionItemKind.Snippet);
+			snippetCompletion2.insertText = new vscode.SnippetString('<div :for={${2:item} <- @${1:list_of_items}} class=\"\">$0</div>');
+			const docs2 = new vscode.MarkdownString("Inserts for-loop'd div")
+			snippetCompletion2.documentation = docs2;
+			snippetCompletion2.detail = "qweqwewqe"
+
+			const rangeToRemove = new vscode.Range(position.line, position.character-1, position.line, position.character);
+    		snippetCompletion2.additionalTextEdits = [vscode.TextEdit.delete(rangeToRemove)];
+			
+			// console.log("==== DOCUMENT ====");
+			// console.log(document.validatePosition());
+
+			// console.log("==== TOKEN ====");
+			// console.log(token);
+
+			// console.log("==== Position ====");
+			// console.log(position.isAfter(new vscode.Position()));
+
+			return [
+				snippetCompletion,
+				snippetCompletion2
+            ];
+        //   const linePrefix = document.lineAt(position).text.substr(0, position.character);
+        //   if (linePrefix.endsWith('~H"""')) {
+        //     // Provide a list of completion items
+     
+        //   }
+        },
+      },
+      ';' // Trigger character
+    )
+  );
 }
 
-// This method is called when your extension is deactivated
-function deactivate() {}
-
-module.exports = {
-	activate,
-	deactivate
-}
+exports.activate = activate;
