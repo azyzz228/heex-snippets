@@ -115,7 +115,16 @@ function activate(context) {
 						ifCompletion,
 						ifElseCompletion,
 						forLoop,
-						divForLoop
+						divForLoop,
+						pForLoop,
+						liForLoop,
+						h1ForLoop,
+						h2ForLoop,
+						h3ForLoop,
+						h4ForLoop,
+						h5ForLoop,
+						h6ForLoop,
+						spanForLoop
 					];
 				},
 			},
