@@ -156,12 +156,12 @@ function activate(context) {
 					const triggerCharacter =
 						new vscode.Range(
 							position.line,
-							position.character - 1,
+							position.character - 2,
 							position.line,
 							position.character
 						);
 
-					const snippetCompletion = new vscode.CompletionItem(`${customComponent}`);
+					const snippetCompletion = new vscode.CompletionItem(`${customComponent}`, vscode.CompletionItemKind.Snippet);
 					snippetCompletion.insertText = new vscode.SnippetString(`<.${customComponent}>$0</.${customComponent}>`);
 					snippetCompletion.detail = `<${customComponent} navigate={~p\"/$1\"}>$0</${customComponent}>`;
 					snippetCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
