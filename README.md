@@ -8,58 +8,51 @@ This extension with code snippets aims to accelerate html production inside of `
 
 This extensions works great in conjunction with `emmet`. Here is the [link](https://github.com/elixir-lsp/vscode-elixir-ls/issues/243#issuecomment-1422409957) on how to make `emmet` work. While `emmet` provides support for simple `HTML` tags, this extension provides useful snippets for writing logic in `HEEx`.
 
-Simply type in `;<snippet>` and there will be VSCODE auto suggestion with the snippet.
+Snippet suggestions are triggered after `;`, so to use the snippets, simply type in `;<snippet>` and there will be VSCODE auto suggestion with the snippet.
 
- But first, there are couple of installations we need to make. (See section below)
+![](https://github.com/azyzz228/html-in-h-sigil/blob/main/assets/sample.gif)
 
 ## Available snippets
-
-### Simple HTML tags
-
-| snippet | generated code |
-|---|---|
-|;div|`<div class=""></div>`|
-|;p|`<p class=""></p>`|
-|;ul|`<ul class=""></ul>`|
-|;li|`<li class=""></li>`|
-|;h1|`<h1 class=""></h1>`|
-|;h2|`<h2 class=""></h2>`|
-|;h3|`<h3 class=""></h3>`|
-|;h4|`<h4 class=""></h4>`|
-|;h5|`<h5 class=""></h5>`|
-|;h6|`<h6 class=""></h6>`|
-|;span|`<span class=""></span>`|
-|;form|`<form class=""></form>`|
-|;button|`<button class=""></button>`|
 
 ### Phoenix specific snippets
 
 | snippet | generated code |
 |---|---|
-|;pe|`<%=  %>`|
-|;plink|`<.link navigate={~p"/"}></.link>`|
+|pe|`<%=  %>`|
+|ln|`<.link navigate={~p"/"}></.link>`|
+|lp|`<.link patch={~p"/"}></.link>`|
+|if|`<%= if %><% end %>`|
+|ifelse|`<%= if %><% else %><% end %>`|
+|for|`<%= for item <- @list_of_items do %> <% end %>`|
 
-All simple HTML tags also have option to be foor loop'ed item, except for `form` and `button` tags. Simply add `fl` after the tag.
+### Simple HTML tags
+Use of `emmet` is assumed for simple tags. Meanwhile, this extension provides the snippets below:
 
-For example:
+#### for-loop'ed
 
 | snippet | generated code |
 |---|---|
-|;divfl|`<div :for={item <- list_of_items} class=""></div>`|
-|;pfl|`<p :for={item <- list_of_items} class=""></p>`|
-|;lifl|`<li :for={item <- list_of_items} class=""></li>`|
+|divfl|`<div :for={item <- list_of_items} class=""></div>`|
+|pfl|`<p :for={item <- list_of_items} class=""></p>`|
+|lifl|`<li :for={item <- list_of_items} class=""></li>`|
+|h1fl|`<h1 :for={item <- list_of_items} class=""></h1>`|
+|h2fl|`<h2 :for={item <- list_of_items} class=""></h2>`|
+|h3fl|`<h3 :for={item <- list_of_items} class=""></h3>`|
+|h4fl|`<h4 :for={item <- list_of_items} class=""></h4>`|
+|h5fl|`<h5 :for={item <- list_of_items} class=""></h5>`|
+|h6fl|`<h6 :for={item <- list_of_items} class=""></h6>`|
+|spanfl|`<span :for={item <- spanst_of_items} class=""></span>`|
+
+### Custom Function Components
+Custom component snippets are triggered after `;.`. To generate the tag for custom component, type in `;.CUSTOM_COMPONENT`, there will be auto suggestion for generating `<.CUSTOM_COMPONENT></.CUSTOM_COMPONENT>`. See known issues.
 
 ## Known Issues
 
-A lot of HTML tags are not included in this snippet. HTML tags and other Phoenix Framework related snippets will be populated if demanded by community. Also, there is a lot of room for Phoenix specific snippets.
-
+- Custom Function Component suggestion does not appear as you type in but appears when you delete what you have written. So, to effectively use it, to get `<.CUSTOM></.CUSTOM>`, you need to type `;.CUSTOMX` then hit the `delete` / `backspace`. 
+- A lot of HTML tags are not included in this snippet. HTML tags and other Phoenix Framework related snippets will be populated if demanded by community. 
 ## Release Notes
 
-Initial release.
-
-### 1.0.0
-
-Initial release of this snippet-extension with the following HTML tags: `div`, `p`, `ul`, `li`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `span`, `form`, `button`. All HTML tags except for `form` and `button` can be Phoenix for loop'ed when you add `fl` after the tag. Two other Phoenix specific snippets include: Code Render block (`<%= %>`), and `link` core component `<.link navigate={~p"/"}></.link>`
+See `CHANGELOG.md`
 
 ---
 
