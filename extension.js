@@ -1,60 +1,125 @@
-const { SnippetString } = require('vscode');
-const vscode = require('vscode');
+const vscode = require("vscode");
 
 function activate(context) {
-  console.log('Elixir snippets extension activated');
+	console.log("Elixir snippets extension activated");
 
-  // Register a completion provider for the `~H"""` sigil
-  context.subscriptions.push(
-    vscode.languages.registerCompletionItemProvider(
-      'elixir',
-      {
-        provideCompletionItems(document, position, token, context) {
-          // Check if the current position is inside a `~H"""` sigil
+	// Register a completion provider for the `~H"""` sigil
+	context.subscriptions.push(
+		vscode.languages.registerCompletionItemProvider(
+			"elixir",
+			{
+				provideCompletionItems(
+					document,
+					position,
+					token,
+					context
+				) {
 
-		  			// a completion item that inserts its text as snippet,
-			// the `insertText`-property is a `SnippetString` which will be
-			// honored by the editor.
-			const snippetCompletion = new vscode.CompletionItem('Good part of the day');
-			snippetCompletion.insertText = new vscode.SnippetString('Good ${1|morning,afternoon,evening|}. It is ${1}, right?');
+					const triggerCharacter =
+						new vscode.Range(
+							position.line,
+							position.character - 1,
+							position.line,
+							position.character
+						);
+						
+					/*
+							Phoenix Specific Completion Snippets
+					*/
+					const codeRenderBlock = new vscode.CompletionItem("pe", vscode.CompletionItemKind.Snippet);
+					codeRenderBlock.insertText = new vscode.SnippetString('<%= $0 %>');
+					codeRenderBlock.detail ='<%= %>';
+					codeRenderBlock.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 
-			const docs = new vscode.MarkdownString("Inserts a snippet that lets you select [link](x.ts).");
-			snippetCompletion.documentation = docs;
-			docs.baseUri = vscode.Uri.parse('http://example.com/a/b/c/');
-			snippetCompletion.detail = "qweqwewqasdjknaskjdne"
+					const linkNavigate = new vscode.CompletionItem("ln", vscode.CompletionItemKind.Snippet);
+					linkNavigate.insertText = new vscode.SnippetString('<.link navigate={~p"/$1"}>$0</.link>');
+					linkNavigate.detail ='<.link navigate={~p"/$1"}>$0</.link>';
+					linkNavigate.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 
-			const snippetCompletion2 = new vscode.CompletionItem('divfl', vscode.CompletionItemKind.Snippet);
-			snippetCompletion2.insertText = new vscode.SnippetString('<div :for={${2:item} <- @${1:list_of_items}} class=\"\">$0</div>');
-			const docs2 = new vscode.MarkdownString("Inserts for-loop'd div")
-			snippetCompletion2.documentation = docs2;
-			snippetCompletion2.detail = "qweqwewqe"
+					const linkPatch = new vscode.CompletionItem("lp", vscode.CompletionItemKind.Snippet);
+					linkPatch.insertText = new vscode.SnippetString('<.link patch={~p"/$1"}>$0</.link>');
+					linkPatch.detail ='<.link patch={~p"/$1"}>$0</.link>';
+					linkPatch.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 
-			const rangeToRemove = new vscode.Range(position.line, position.character-1, position.line, position.character);
-    		snippetCompletion2.additionalTextEdits = [vscode.TextEdit.delete(rangeToRemove)];
+					const ifCompletion = new vscode.CompletionItem("if", vscode.CompletionItemKind.Snippet);
+					ifCompletion.insertText = new vscode.SnippetString('<%= if $1 %>\n\t$0\n<% end %>');
+					ifCompletion.detail ='HEEX: if end statement';
+					ifCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+
+					const ifElseCompletion = new vscode.CompletionItem("ifelse", vscode.CompletionItemKind.Snippet);
+					ifElseCompletion.insertText = new vscode.SnippetString('<%= if $1 %>\n\t$2\n<% else %>\n\t$0\n<% end %>');
+					ifElseCompletion.detail ='HEEX: if else end statement';
+					ifElseCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					
+					const forLoop = new vscode.CompletionItem("for", vscode.CompletionItemKind.Snippet);
+					forLoop.insertText = new vscode.SnippetString('<%= for ${2:item} <- @${1:list_of_items} do %>\n\t$0\n<% end %>');
+					forLoop.detail ='HEEX: for loop';
+					forLoop.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+
+					/*
+							For looped HTML snippets
+					*/
+					const divForLoop = new vscode.CompletionItem("divfl", vscode.CompletionItemKind.Snippet);
+					divForLoop.insertText = new vscode.SnippetString('<div :for={${2:item} <- @${1:list_of_items}} class="">$0</div>');
+					divForLoop.detail ='<div :for={${2:item} <- @${1:list_of_items}} class="">$0</div>';
+					divForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					return [
+						codeRenderBlock,
+						linkNavigate,
+						linkPatch,
+						ifCompletion,
+						ifElseCompletion,
+						forLoop,
+						divForLoop
+					];
+				},
+			},
+			";" // Trigger character
+		)
+	);
+
+	context.subscriptions.push(
+		vscode.languages.registerCompletionItemProvider(
+			"elixir",
+			{
+				provideCompletionItems(
+					document,
+					position,
+					token,
+					context
+				) {
+					//TODO: fix snippet suggesting only after pressing "Del"
 			
-			// console.log("==== DOCUMENT ====");
-			// console.log(document.validatePosition());
+					// ;.custom_component => custom_component
+					const regex = /(?<=;.)\w+/;
+					const str = document.lineAt(position).text;
+					const match = str.match(regex);
 
-			// console.log("==== TOKEN ====");
-			// console.log(token);
+					if (!match) return;
 
-			// console.log("==== Position ====");
-			// console.log(position.isAfter(new vscode.Position()));
+					const customComponent = match[0];
 
-			return [
-				snippetCompletion,
-				snippetCompletion2
-            ];
-        //   const linePrefix = document.lineAt(position).text.substr(0, position.character);
-        //   if (linePrefix.endsWith('~H"""')) {
-        //     // Provide a list of completion items
-     
-        //   }
-        },
-      },
-      ';' // Trigger character
-    )
-  );
+					const triggerCharacter =
+						new vscode.Range(
+							position.line,
+							position.character - 1,
+							position.line,
+							position.character
+						);
+
+					const snippetCompletion = new vscode.CompletionItem(`${customComponent}`);
+					snippetCompletion.insertText = new vscode.SnippetString(`<.${customComponent}>$0</.${customComponent}>`);
+					snippetCompletion.detail = `<${customComponent} navigate={~p\"/$1\"}>$0</${customComponent}>`;
+					snippetCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+
+					return [snippetCompletion];
+				},
+			},
+			";",
+			"."
+		)
+	);
 }
 
 exports.activate = activate;
