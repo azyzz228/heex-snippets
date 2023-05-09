@@ -1,65 +1,66 @@
-# heex-snippets-in-h-sigil README
+# HEEx Snippets
 
-This is the README for your extension "heex-snippets-in-h-sigil". After writing up a brief description, we recommend including the following sections.
+Write fast HTML inside of `.ex` files with these snippets when writing Phoenix Application with Elixir.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension with code snippets aims to accelerate html production inside of `~H` sigil in Phoenix Framework (especially useful when writing LiveView or functional components).
 
-For example if there is an image subfolder under your extension project workspace:
+This extensions works great in conjunction with `emmet`. Here is the [link](https://github.com/elixir-lsp/vscode-elixir-ls/issues/243#issuecomment-1422409957) on how to make `emmet` work. While `emmet` provides support for simple `HTML` tags, this extension provides useful snippets for writing logic in `HEEx`.
 
-\!\[feature X\]\(images/feature-x.png\)
+Simply type in `;<snippet>` and there will be VSCODE auto suggestion with the snippet.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+ But first, there are couple of installations we need to make. (See section below)
 
-## Requirements
+## Available snippets
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Simple HTML tags
 
-## Extension Settings
+| snippet | generated code |
+|---|---|
+|;div|`<div class=""></div>`|
+|;p|`<p class=""></p>`|
+|;ul|`<ul class=""></ul>`|
+|;li|`<li class=""></li>`|
+|;h1|`<h1 class=""></h1>`|
+|;h2|`<h2 class=""></h2>`|
+|;h3|`<h3 class=""></h3>`|
+|;h4|`<h4 class=""></h4>`|
+|;h5|`<h5 class=""></h5>`|
+|;h6|`<h6 class=""></h6>`|
+|;span|`<span class=""></span>`|
+|;form|`<form class=""></form>`|
+|;button|`<button class=""></button>`|
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Phoenix specific snippets
+
+| snippet | generated code |
+|---|---|
+|;pe|`<%=  %>`|
+|;plink|`<.link navigate={~p"/"}></.link>`|
+
+All simple HTML tags also have option to be foor loop'ed item, except for `form` and `button` tags. Simply add `fl` after the tag.
 
 For example:
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+| snippet | generated code |
+|---|---|
+|;divfl|`<div :for={item <- list_of_items} class=""></div>`|
+|;pfl|`<p :for={item <- list_of_items} class=""></p>`|
+|;lifl|`<li :for={item <- list_of_items} class=""></li>`|
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+A lot of HTML tags are not included in this snippet. HTML tags and other Phoenix Framework related snippets will be populated if demanded by community. Also, there is a lot of room for Phoenix specific snippets.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+Initial release.
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of this snippet-extension with the following HTML tags: `div`, `p`, `ul`, `li`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `span`, `form`, `button`. All HTML tags except for `form` and `button` can be Phoenix for loop'ed when you add `fl` after the tag. Two other Phoenix specific snippets include: Code Render block (`<%= %>`), and `link` core component `<.link navigate={~p"/"}></.link>`
 
 ---
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
