@@ -2,6 +2,8 @@
 
 Write fast HTML inside of `.ex` files with these snippets when writing Phoenix Application with Elixir.
 
+![](https://github.com/azyzz228/heex-snippets/blob/main/assets/demo.gif)
+
 ## Features
 
 This extension with code snippets aims to accelerate html production inside of `~H` sigil in Phoenix Framework (especially useful when writing LiveView or functional components).
