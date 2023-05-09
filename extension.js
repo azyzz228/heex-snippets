@@ -63,6 +63,51 @@ function activate(context) {
 					divForLoop.detail ='<div :for={${2:item} <- @${1:list_of_items}} class="">$0</div>';
 					divForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
+					const pForLoop = new vscode.CompletionItem("pfl", vscode.CompletionItemKind.Snippet);
+					pForLoop.insertText = new vscode.SnippetString('<p :for={${2:item} <- @${1:list_of_items}} class="">$0</p>');
+					pForLoop.detail ='<p :for={${2:item} <- @${1:list_of_items}} class="">$0</p>';
+					pForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const liForLoop = new vscode.CompletionItem("lifl", vscode.CompletionItemKind.Snippet);
+					liForLoop.insertText = new vscode.SnippetString('<li :for={${2:item} <- @${1:list_of_items}} class="">$0</li>');
+					liForLoop.detail ='<li :for={${2:item} <- @${1:list_of_items}} class="">$0</li>';
+					liForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const h1ForLoop = new vscode.CompletionItem("h1fl", vscode.CompletionItemKind.Snippet);
+					h1ForLoop.insertText = new vscode.SnippetString('<h1 :for={${2:item} <- @${1:list_of_items}} class="">$0</h1>');
+					h1ForLoop.detail ='<h1 :for={${2:item} <- @${1:list_of_items}} class="">$0</h1>';
+					h1ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const h2ForLoop = new vscode.CompletionItem("h2fl", vscode.CompletionItemKind.Snippet);
+					h2ForLoop.insertText = new vscode.SnippetString('<h2 :for={${2:item} <- @${1:list_of_items}} class="">$0</h2>');
+					h2ForLoop.detail ='<h2 :for={${2:item} <- @${1:list_of_items}} class="">$0</h2>';
+					h2ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const h3ForLoop = new vscode.CompletionItem("h3fl", vscode.CompletionItemKind.Snippet);
+					h3ForLoop.insertText = new vscode.SnippetString('<h3 :for={${2:item} <- @${1:list_of_items}} class="">$0</h3>');
+					h3ForLoop.detail ='<h3 :for={${2:item} <- @${1:list_of_items}} class="">$0</h3>';
+					h3ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const h4ForLoop = new vscode.CompletionItem("h4fl", vscode.CompletionItemKind.Snippet);
+					h4ForLoop.insertText = new vscode.SnippetString('<h4 :for={${2:item} <- @${1:list_of_items}} class="">$0</h4>');
+					h4ForLoop.detail ='<h4 :for={${2:item} <- @${1:list_of_items}} class="">$0</h4>';
+					h4ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const h5ForLoop = new vscode.CompletionItem("h5fl", vscode.CompletionItemKind.Snippet);
+					h5ForLoop.insertText = new vscode.SnippetString('<h5 :for={${2:item} <- @${1:list_of_items}} class="">$0</h5>');
+					h5ForLoop.detail ='<h5 :for={${2:item} <- @${1:list_of_items}} class="">$0</h5>';
+					h5ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const h6ForLoop = new vscode.CompletionItem("h6fl", vscode.CompletionItemKind.Snippet);
+					h6ForLoop.insertText = new vscode.SnippetString('<h6 :for={${2:item} <- @${1:list_of_items}} class="">$0</h6>');
+					h6ForLoop.detail ='<h6 :for={${2:item} <- @${1:list_of_items}} class="">$0</h6>';
+					h6ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const spanForLoop = new vscode.CompletionItem("spanfl", vscode.CompletionItemKind.Snippet);
+					spanForLoop.insertText = new vscode.SnippetString('<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>');
+					spanForLoop.detail ='<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>';
+					spanForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
 					return [
 						codeRenderBlock,
 						linkNavigate,
