@@ -1,7 +1,7 @@
 {
-  "name": "heex-snippets-in-h-sigil",
-  "displayName": "heex snippets in h sigil",
-  "description": "",
+  "name": "heex-snippets",
+  "displayName": "HEEx Snippets",
+  "description": "Write fast HTML inside of .ex files with these snippets when writing Phoenix Application with Elixir.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.78.0"
@@ -17,8 +17,7 @@
       {
         "id": "elixir",
         "aliases": ["Elixir", "elixir"],
-        "extensions": [".ex", ".exs"],
-        "configuration": "./language-configuration.json"
+        "extensions": [".ex"]
       }
     ],
     "commands": [{
