@@ -3,7 +3,6 @@ const vscode = require("vscode");
 function activate(context) {
 	console.log("Elixir snippets extension activated");
 
-	// Register a completion provider for the `~H"""` sigil
 	context.subscriptions.push(
 		vscode.languages.registerCompletionItemProvider(
 			"elixir",
