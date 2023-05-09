@@ -9,14 +9,24 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
-  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:elixir"
+  ],
   "contributes": {
+    "languages": [
+      {
+        "id": "elixir",
+        "aliases": ["Elixir", "elixir"],
+        "extensions": [".ex", ".exs"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
     "commands": [{
       "command": "heex-snippets-in-h-sigil.helloWorld",
       "title": "Hello World"
     }]
   },
+  "main": "./extension.js",
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
