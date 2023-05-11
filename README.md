@@ -2,6 +2,11 @@
 
 Write fast HTML inside of `.ex` files with these snippets when writing Phoenix Application with Elixir.
 
+Available at:
+
+- [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=aziz-abdullaev.heex-snippets)
+- [Open VSX Repo](https://open-vsx.org/extension/aziz-abdullaev/heex-snippets)
+
 ![](https://github.com/azyzz228/heex-snippets/blob/main/assets/demo.gif)
 
 ## Features
