@@ -108,6 +108,11 @@ function activate(context) {
 					spanForLoop.detail ='<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>';
 					spanForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
+					const slot = new vscode.CompletionItem("slot", vscode.CompletionItemKind.Snippet);
+					slot.insertText = new vscode.SnippetString('<:${1:item}>$0</:${1:item}>');
+					slot.detail = '[<:slot></:slot>] Slot tag for functional component';
+					slot.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
 					return [
 						codeRenderBlock,
 						linkNavigate,
@@ -124,7 +129,8 @@ function activate(context) {
 						h4ForLoop,
 						h5ForLoop,
 						h6ForLoop,
-						spanForLoop
+						spanForLoop,
+						slot
 					];
 				},
 			},
