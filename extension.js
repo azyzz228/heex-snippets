@@ -54,6 +54,11 @@ function activate(context) {
 					forLoop.insertText = new vscode.SnippetString('<%= for ${2:item} <- @${1:list_of_items} do %>\n\t$0\n<% end %>');
 					forLoop.detail ='HEEX: for loop';
 					forLoop.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					
+					const slot = new vscode.CompletionItem("slot", vscode.CompletionItemKind.Snippet);
+					slot.insertText = new vscode.SnippetString('<:${1:item}>$0</:${1:item}>');
+					slot.detail = '[<:slot></:slot>] Slot tag for functional component';
+					slot.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					/*
 							For looped HTML snippets
@@ -107,11 +112,6 @@ function activate(context) {
 					spanForLoop.insertText = new vscode.SnippetString('<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>');
 					spanForLoop.detail ='<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>';
 					spanForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
-
-					const slot = new vscode.CompletionItem("slot", vscode.CompletionItemKind.Snippet);
-					slot.insertText = new vscode.SnippetString('<:${1:item}>$0</:${1:item}>');
-					slot.detail = '[<:slot></:slot>] Slot tag for functional component';
-					slot.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					return [
 						codeRenderBlock,
