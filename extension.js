@@ -65,6 +65,141 @@ function activate(context) {
 					slot.detail = '[<:slot></:slot>] Slot tag for functional component';
 					slot.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
+					const phxValue = new vscode.CompletionItem("phx-value", vscode.CompletionItemKind.Snippet);
+					phxValue.insertText = new vscode.SnippetString('phx-value-{$1:id}');
+					phxValue.detail = 'phx-value';
+					phxValue.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxClick = new vscode.CompletionItem("phx-click", vscode.CompletionItemKind.Snippet);
+					phxClick.insertText = new vscode.SnippetString('phx-click="$1"');
+					phxClick.detail = 'phx-click';
+					phxClick.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxClickAway = new vscode.CompletionItem("phx-click-away", vscode.CompletionItemKind.Snippet);
+					phxClickAway.insertText = new vscode.SnippetString('phx-click-away="$1"');
+					phxClickAway.detail = 'phx-click-away';
+					phxClickAway.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxChange = new vscode.CompletionItem("phx-change", vscode.CompletionItemKind.Snippet);
+					phxChange.insertText = new vscode.SnippetString('phx-change="$1"');
+					phxChange.detail = 'phx-change';
+					phxChange.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxSubmit = new vscode.CompletionItem("phx-submit", vscode.CompletionItemKind.Snippet);
+					phxSubmit.insertText = new vscode.SnippetString('phx-submit="$1"');
+					phxSubmit.detail = 'phx-submit';
+					phxSubmit.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxFeedbackFor = new vscode.CompletionItem("phx-feedback-for", vscode.CompletionItemKind.Snippet);
+					phxFeedbackFor.insertText = new vscode.SnippetString('phx-feedback-for="{$1:id}"');
+					phxFeedbackFor.detail = 'phx-feedback-for';
+					phxFeedbackFor.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxDisableWith = new vscode.CompletionItem("phx-disable-with", vscode.CompletionItemKind.Snippet);
+					phxDisableWith.insertText = new vscode.SnippetString('phx-disable-with="{$1:text}"');
+					phxDisableWith.detail = 'phx-disable-with';
+					phxDisableWith.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxTriggerAction = new vscode.CompletionItem("phx-trigger-action", vscode.CompletionItemKind.Snippet);
+					phxTriggerAction.insertText = new vscode.SnippetString('phx-trigger-action="$1"');
+					phxTriggerAction.detail = 'phx-trigger-action';
+					phxTriggerAction.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxAutoRecover = new vscode.CompletionItem("phx-auto-recover", vscode.CompletionItemKind.Snippet);
+					phxAutoRecover.insertText = new vscode.SnippetString('phx-auto-recover="$1"');
+					phxAutoRecover.detail = 'phx-auto-recover';
+					phxAutoRecover.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxBlur = new vscode.CompletionItem("phx-blur", vscode.CompletionItemKind.Snippet);
+					phxBlur.insertText = new vscode.SnippetString('phx-blur="$1"');
+					phxBlur.detail = 'phx-blur';
+					phxBlur.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxFocus = new vscode.CompletionItem("phx-focus", vscode.CompletionItemKind.Snippet);
+					phxFocus.insertText = new vscode.SnippetString('phx-focus="$1"');
+					phxFocus.detail = 'phx-focus';
+					phxFocus.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxWindowBlur = new vscode.CompletionItem("phx-window-blur", vscode.CompletionItemKind.Snippet);
+					phxWindowBlur.insertText = new vscode.SnippetString('phx-window-blur="$1"');
+					phxWindowBlur.detail = 'phx-window-blur';
+					phxWindowBlur.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxWindowFocus = new vscode.CompletionItem("phx-window-focus", vscode.CompletionItemKind.Snippet);
+					phxWindowFocus.insertText = new vscode.SnippetString('phx-window-focus="$1"');
+					phxWindowFocus.detail = 'phx-window-focus';
+					phxWindowFocus.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxKeydown = new vscode.CompletionItem("phx-keydown", vscode.CompletionItemKind.Snippet);
+					phxKeydown.insertText = new vscode.SnippetString('phx-keydown="$1"');
+					phxKeydown.detail = 'phx-keydown';
+					phxKeydown.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxKeyup = new vscode.CompletionItem("phx-keyup", vscode.CompletionItemKind.Snippet);
+					phxKeyup.insertText = new vscode.SnippetString('phx-keyup="$1"');
+					phxKeyup.detail = 'phx-keyup';
+					phxKeyup.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxWindowKeydown = new vscode.CompletionItem("phx-window-keydown", vscode.CompletionItemKind.Snippet);
+					phxWindowKeydown.insertText = new vscode.SnippetString('phx-window-keydown="$1"');
+					phxWindowKeydown.detail = 'phx-window-keydown';
+					phxWindowKeydown.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxWindowKeyup = new vscode.CompletionItem("phx-window-keyupx", vscode.CompletionItemKind.Snippet);
+					phxWindowKeyup.insertText = new vscode.SnippetString('phx-window-keyup="$1"');
+					phxWindowKeyup.detail = 'phx-window-keyup';
+					phxWindowKeyup.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxKey = new vscode.CompletionItem("phx-key", vscode.CompletionItemKind.Snippet);
+					phxKey.insertText = new vscode.SnippetString('phx-key="$1"');
+					phxKey.detail = 'phx-key';
+					phxKey.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxViewportTop = new vscode.CompletionItem("phx-viewport-top", vscode.CompletionItemKind.Snippet);
+					phxViewportTop.insertText = new vscode.SnippetString('phx-viewport-top="$1"');
+					phxViewportTop.detail = 'phx-viewport-top';
+					phxViewportTop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxViewportBottom = new vscode.CompletionItem("phx-viewport-bottom", vscode.CompletionItemKind.Snippet);
+					phxViewportBottom.insertText = new vscode.SnippetString('phx-viewport-bottom="$1"');
+					phxViewportBottom.detail = 'phx-viewport-bottom';
+					phxViewportBottom.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxMounted = new vscode.CompletionItem("phx-mounted", vscode.CompletionItemKind.Snippet);
+					phxMounted.insertText = new vscode.SnippetString('phx-mounted="$1"');
+					phxMounted.detail = 'phx-mounted';
+					phxMounted.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxUpdate = new vscode.CompletionItem("phx-update", vscode.CompletionItemKind.Snippet);
+					phxUpdate.insertText = new vscode.SnippetString('phx-update="$1"');
+					phxUpdate.detail = 'phx-update=[ replace | stream | ignore ]';
+					phxUpdate.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxRemove = new vscode.CompletionItem("phx-remove", vscode.CompletionItemKind.Snippet);
+					phxRemove.insertText = new vscode.SnippetString('phx-remove="$1"');
+					phxRemove.detail = 'phx-remove';
+					phxRemove.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxHook = new vscode.CompletionItem("phx-hook", vscode.CompletionItemKind.Snippet);
+					phxHook.insertText = new vscode.SnippetString('phx-hook="$1"');
+					phxHook.detail = 'phx-hook';
+					phxHook.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxDebounce = new vscode.CompletionItem("phx-debounce", vscode.CompletionItemKind.Snippet);
+					phxDebounce.insertText = new vscode.SnippetString('phx-debounce="$1"');
+					phxDebounce.detail = 'phx-debounce=[ milliseconds | "blur"]';
+					phxDebounce.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const phxThrottle = new vscode.CompletionItem("phx-throttle", vscode.CompletionItemKind.Snippet);
+					phxThrottle.insertText = new vscode.SnippetString('phx-throttle="{$1:200}"');
+					phxThrottle.detail = 'phx-throttle=[milliseconds:integer]';
+					phxThrottle.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+     
+					const phxTrackStatic = new vscode.CompletionItem("phx-track-static", vscode.CompletionItemKind.Snippet);
+					phxTrackStatic.insertText = new vscode.SnippetString('phx-track-static="$1"');
+					phxTrackStatic.detail = 'phx-track-static';
+					phxTrackStatic.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
 					/*
 							For looped HTML snippets
 					*/
@@ -136,7 +271,35 @@ function activate(context) {
 						h6ForLoop,
 						spanForLoop,
 						slot,
-                        liveComponent
+                        liveComponent,
+                        phxValue,
+                        phxClick,
+                        phxClickAway,
+                        phxChange,
+                        phxSubmit,
+                        phxSubmit,
+                        phxFeedbackFor,
+                        phxDisableWith,
+                        phxTriggerAction,
+                        phxAutoRecover,
+                        phxBlur,
+                        phxFocus,
+                        phxWindowBlur,
+                        phxWindowFocus,
+                        phxKeydown,
+                        phxKeyup,
+                        phxWindowKeydown,
+                        phxWindowKeyup,
+                        phxKey,
+                        phxViewportBottom,
+                        phxViewportTop,
+                        phxMounted,
+                        phxUpdate,
+                        phxRemove,
+                        phxHook,
+                        phxDebounce,
+                        phxThrottle,
+                        phxTrackStatic
 					];
 				},
 			},
