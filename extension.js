@@ -41,12 +41,12 @@ function activate(context) {
 					linkPatch.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 
 					const ifCompletion = new vscode.CompletionItem("if", vscode.CompletionItemKind.Snippet);
-					ifCompletion.insertText = new vscode.SnippetString('<%= if $1 %>\n\t$0\n<% end %>');
+					ifCompletion.insertText = new vscode.SnippetString('<%= if $1 do %>\n\t$0\n<% end %>');
 					ifCompletion.detail ='HEEX: if end statement';
 					ifCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 
 					const ifElseCompletion = new vscode.CompletionItem("ifelse", vscode.CompletionItemKind.Snippet);
-					ifElseCompletion.insertText = new vscode.SnippetString('<%= if $1 %>\n\t$2\n<% else %>\n\t$0\n<% end %>');
+					ifElseCompletion.insertText = new vscode.SnippetString('<%= if $1 do %>\n\t$2\n<% else %>\n\t$0\n<% end %>');
 					ifElseCompletion.detail ='HEEX: if else end statement';
 					ifElseCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 					
