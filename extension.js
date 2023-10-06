@@ -40,6 +40,11 @@ function activate(context) {
 					linkPatch.detail ='<.link patch={~p"/$1"}>$0</.link>';
 					linkPatch.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 
+					const liveComponent = new vscode.CompletionItem("lc", vscode.CompletionItemKind.Snippet);
+					liveComponent.insertText = new vscode.SnippetString('<.live_component module={$1}>$0 id={$2} />');
+					liveComponent.detail ='<.live_component module={$1}>$0 id={$2} />';
+					liveComponent.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+
 					const ifCompletion = new vscode.CompletionItem("if", vscode.CompletionItemKind.Snippet);
 					ifCompletion.insertText = new vscode.SnippetString('<%= if $1 do %>\n\t$0\n<% end %>');
 					ifCompletion.detail ='HEEX: if end statement';
@@ -130,7 +135,8 @@ function activate(context) {
 						h5ForLoop,
 						h6ForLoop,
 						spanForLoop,
-						slot
+						slot,
+                        liveComponent
 					];
 				},
 			},
