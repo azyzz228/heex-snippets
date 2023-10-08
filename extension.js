@@ -42,7 +42,7 @@ function activate(context) {
 
 					const liveComponent = new vscode.CompletionItem("lc", vscode.CompletionItemKind.Snippet);
 					liveComponent.insertText = new vscode.SnippetString('<.live_component module={$1}>$0 id={$2} />');
-					liveComponent.detail ='<.live_component module={$1}>$0 id={$2} />';
+					liveComponent.detail ='<.live_component module={$1} id={$2} />';
 					liveComponent.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
 
 					const ifCompletion = new vscode.CompletionItem("if", vscode.CompletionItemKind.Snippet);
