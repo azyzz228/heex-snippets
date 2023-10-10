@@ -31,6 +31,10 @@ Snippet suggestions are triggered after `;`, so to use the snippets, simply type
 |if|`<%= if do %><% end %>`|
 |ifelse|`<%= if do %><% else %><% end %>`|
 |for|`<%= for item <- @list_of_items do %> <% end %>`|
+|lc|`<.live_component module={$1} id={$2} />`|
+|slot|`<:slot></:slot>`|
+
+And all `phx-` bindings: phx-value-*, phx-click, phx-click-away, phx-change, phx-submit, phx-feedback-for, phx-disable-with, phx-trigger-action, phx-auto-recover, phx-blur, phx-focus, phx-window-blur, phx-window-focus, phx-keydown, phx-keyup, phx-window-keydown, phx-window-keyup, phx-key, phx-viewport-top, phx-viewport-bottom, phx-mounted, phx-update, phx-remove, phx-hook, phx-mounted, phx-disconnected, phx-connected, phx-debounce, phx-throttle, phx-track-static
 
 ### Simple HTML tags
 Use of `emmet` is assumed for simple tags. Meanwhile, this extension provides the snippets below:
