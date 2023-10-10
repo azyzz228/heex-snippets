@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 None
 
-## [1.1.1] - 2023-05-13
+## [1.2.0] - 2023-10-10
+
+### Added
+
+- snippets for `{:noreply, socket}`, `{:ok, socket}`, `socket = socket |> `
+
+## [1.1.1] - 2023-10-08
 
 ### Added
 
