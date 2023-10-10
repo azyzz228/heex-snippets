@@ -21,52 +21,52 @@ function activate(context) {
 							position.line,
 							position.character
 						);
-						
+
 					/*
 							Phoenix Specific Completion Snippets
 					*/
 					const codeRenderBlock = new vscode.CompletionItem("pe", vscode.CompletionItemKind.Snippet);
 					codeRenderBlock.insertText = new vscode.SnippetString('<%= $0 %>');
-					codeRenderBlock.detail ='<%= %>';
-					codeRenderBlock.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					codeRenderBlock.detail = '<%= %>';
+					codeRenderBlock.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const linkNavigate = new vscode.CompletionItem("ln", vscode.CompletionItemKind.Snippet);
 					linkNavigate.insertText = new vscode.SnippetString('<.link navigate={~p"/$1"}>$0</.link>');
-					linkNavigate.detail ='<.link navigate={~p"/$1"}>$0</.link>';
-					linkNavigate.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					linkNavigate.detail = '<.link navigate={~p"/$1"}>$0</.link>';
+					linkNavigate.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const linkPatch = new vscode.CompletionItem("lp", vscode.CompletionItemKind.Snippet);
 					linkPatch.insertText = new vscode.SnippetString('<.link patch={~p"/$1"}>$0</.link>');
-					linkPatch.detail ='<.link patch={~p"/$1"}>$0</.link>';
-					linkPatch.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					linkPatch.detail = '<.link patch={~p"/$1"}>$0</.link>';
+					linkPatch.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const liveComponent = new vscode.CompletionItem("lc", vscode.CompletionItemKind.Snippet);
 					liveComponent.insertText = new vscode.SnippetString('<.live_component module={$1}>$0 id={$2} />');
-					liveComponent.detail ='<.live_component module={$1} id={$2} />';
-					liveComponent.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					liveComponent.detail = '<.live_component module={$1} id={$2} />';
+					liveComponent.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const ifCompletion = new vscode.CompletionItem("if", vscode.CompletionItemKind.Snippet);
 					ifCompletion.insertText = new vscode.SnippetString('<%= if $1 do %>\n\t$0\n<% end %>');
-					ifCompletion.detail ='HEEX: if end statement';
-					ifCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					ifCompletion.detail = 'HEEX: if end statement';
+					ifCompletion.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const ifElseCompletion = new vscode.CompletionItem("ifelse", vscode.CompletionItemKind.Snippet);
 					ifElseCompletion.insertText = new vscode.SnippetString('<%= if $1 do %>\n\t$2\n<% else %>\n\t$0\n<% end %>');
-					ifElseCompletion.detail ='HEEX: if else end statement';
-					ifElseCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
-					
+					ifElseCompletion.detail = 'HEEX: if else end statement';
+					ifElseCompletion.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
 					const forLoop = new vscode.CompletionItem("for", vscode.CompletionItemKind.Snippet);
 					forLoop.insertText = new vscode.SnippetString('<%= for ${2:item} <- @${1:list_of_items} do %>\n\t$0\n<% end %>');
-					forLoop.detail ='HEEX: for loop';
-					forLoop.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
-					
+					forLoop.detail = 'HEEX: for loop';
+					forLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
 					const slot = new vscode.CompletionItem("slot", vscode.CompletionItemKind.Snippet);
 					slot.insertText = new vscode.SnippetString('<:${1:item}>$0</:${1:item}>');
 					slot.detail = '[<:slot></:slot>] Slot tag for functional component';
 					slot.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const phxValue = new vscode.CompletionItem("phx-value", vscode.CompletionItemKind.Snippet);
-					phxValue.insertText = new vscode.SnippetString('phx-value-{$1:id}');
+					phxValue.insertText = new vscode.SnippetString('phx-value-$1');
 					phxValue.detail = 'phx-value';
 					phxValue.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
@@ -91,13 +91,13 @@ function activate(context) {
 					phxSubmit.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const phxFeedbackFor = new vscode.CompletionItem("phx-feedback-for", vscode.CompletionItemKind.Snippet);
-					phxFeedbackFor.insertText = new vscode.SnippetString('phx-feedback-for="{$1:id}"');
-					phxFeedbackFor.detail = 'phx-feedback-for';
+					phxFeedbackFor.insertText = new vscode.SnippetString('phx-feedback-for="$1"');
+					phxFeedbackFor.detail = 'phx-feedback-for="id"';
 					phxFeedbackFor.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const phxDisableWith = new vscode.CompletionItem("phx-disable-with", vscode.CompletionItemKind.Snippet);
-					phxDisableWith.insertText = new vscode.SnippetString('phx-disable-with="{$1:text}"');
-					phxDisableWith.detail = 'phx-disable-with';
+					phxDisableWith.insertText = new vscode.SnippetString('phx-disable-with="$1"');
+					phxDisableWith.detail = 'phx-disable-with="TEXT"';
 					phxDisableWith.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const phxTriggerAction = new vscode.CompletionItem("phx-trigger-action", vscode.CompletionItemKind.Snippet);
@@ -191,10 +191,10 @@ function activate(context) {
 					phxDebounce.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const phxThrottle = new vscode.CompletionItem("phx-throttle", vscode.CompletionItemKind.Snippet);
-					phxThrottle.insertText = new vscode.SnippetString('phx-throttle="{$1:200}"');
-					phxThrottle.detail = 'phx-throttle=[milliseconds:integer]';
+					phxThrottle.insertText = new vscode.SnippetString('phx-throttle="$1"');
+					phxThrottle.detail = 'phx-throttle=[200 milliseconds:integer]';
 					phxThrottle.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
-     
+
 					const phxTrackStatic = new vscode.CompletionItem("phx-track-static", vscode.CompletionItemKind.Snippet);
 					phxTrackStatic.insertText = new vscode.SnippetString('phx-track-static="$1"');
 					phxTrackStatic.detail = 'phx-track-static';
@@ -219,52 +219,52 @@ function activate(context) {
 					*/
 					const divForLoop = new vscode.CompletionItem("divfl", vscode.CompletionItemKind.Snippet);
 					divForLoop.insertText = new vscode.SnippetString('<div :for={${2:item} <- @${1:list_of_items}} class="">$0</div>');
-					divForLoop.detail ='<div :for={${2:item} <- @${1:list_of_items}} class="">$0</div>';
+					divForLoop.detail = '<div :for={${2:item} <- @${1:list_of_items}} class="">$0</div>';
 					divForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const pForLoop = new vscode.CompletionItem("pfl", vscode.CompletionItemKind.Snippet);
 					pForLoop.insertText = new vscode.SnippetString('<p :for={${2:item} <- @${1:list_of_items}} class="">$0</p>');
-					pForLoop.detail ='<p :for={${2:item} <- @${1:list_of_items}} class="">$0</p>';
+					pForLoop.detail = '<p :for={${2:item} <- @${1:list_of_items}} class="">$0</p>';
 					pForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const liForLoop = new vscode.CompletionItem("lifl", vscode.CompletionItemKind.Snippet);
 					liForLoop.insertText = new vscode.SnippetString('<li :for={${2:item} <- @${1:list_of_items}} class="">$0</li>');
-					liForLoop.detail ='<li :for={${2:item} <- @${1:list_of_items}} class="">$0</li>';
+					liForLoop.detail = '<li :for={${2:item} <- @${1:list_of_items}} class="">$0</li>';
 					liForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const h1ForLoop = new vscode.CompletionItem("h1fl", vscode.CompletionItemKind.Snippet);
 					h1ForLoop.insertText = new vscode.SnippetString('<h1 :for={${2:item} <- @${1:list_of_items}} class="">$0</h1>');
-					h1ForLoop.detail ='<h1 :for={${2:item} <- @${1:list_of_items}} class="">$0</h1>';
+					h1ForLoop.detail = '<h1 :for={${2:item} <- @${1:list_of_items}} class="">$0</h1>';
 					h1ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const h2ForLoop = new vscode.CompletionItem("h2fl", vscode.CompletionItemKind.Snippet);
 					h2ForLoop.insertText = new vscode.SnippetString('<h2 :for={${2:item} <- @${1:list_of_items}} class="">$0</h2>');
-					h2ForLoop.detail ='<h2 :for={${2:item} <- @${1:list_of_items}} class="">$0</h2>';
+					h2ForLoop.detail = '<h2 :for={${2:item} <- @${1:list_of_items}} class="">$0</h2>';
 					h2ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const h3ForLoop = new vscode.CompletionItem("h3fl", vscode.CompletionItemKind.Snippet);
 					h3ForLoop.insertText = new vscode.SnippetString('<h3 :for={${2:item} <- @${1:list_of_items}} class="">$0</h3>');
-					h3ForLoop.detail ='<h3 :for={${2:item} <- @${1:list_of_items}} class="">$0</h3>';
+					h3ForLoop.detail = '<h3 :for={${2:item} <- @${1:list_of_items}} class="">$0</h3>';
 					h3ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const h4ForLoop = new vscode.CompletionItem("h4fl", vscode.CompletionItemKind.Snippet);
 					h4ForLoop.insertText = new vscode.SnippetString('<h4 :for={${2:item} <- @${1:list_of_items}} class="">$0</h4>');
-					h4ForLoop.detail ='<h4 :for={${2:item} <- @${1:list_of_items}} class="">$0</h4>';
+					h4ForLoop.detail = '<h4 :for={${2:item} <- @${1:list_of_items}} class="">$0</h4>';
 					h4ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const h5ForLoop = new vscode.CompletionItem("h5fl", vscode.CompletionItemKind.Snippet);
 					h5ForLoop.insertText = new vscode.SnippetString('<h5 :for={${2:item} <- @${1:list_of_items}} class="">$0</h5>');
-					h5ForLoop.detail ='<h5 :for={${2:item} <- @${1:list_of_items}} class="">$0</h5>';
+					h5ForLoop.detail = '<h5 :for={${2:item} <- @${1:list_of_items}} class="">$0</h5>';
 					h5ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const h6ForLoop = new vscode.CompletionItem("h6fl", vscode.CompletionItemKind.Snippet);
 					h6ForLoop.insertText = new vscode.SnippetString('<h6 :for={${2:item} <- @${1:list_of_items}} class="">$0</h6>');
-					h6ForLoop.detail ='<h6 :for={${2:item} <- @${1:list_of_items}} class="">$0</h6>';
+					h6ForLoop.detail = '<h6 :for={${2:item} <- @${1:list_of_items}} class="">$0</h6>';
 					h6ForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					const spanForLoop = new vscode.CompletionItem("spanfl", vscode.CompletionItemKind.Snippet);
 					spanForLoop.insertText = new vscode.SnippetString('<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>');
-					spanForLoop.detail ='<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>';
+					spanForLoop.detail = '<span :for={${2:item} <- @${1:list_of_items}} class="">$0</span>';
 					spanForLoop.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					return [
@@ -285,35 +285,35 @@ function activate(context) {
 						h6ForLoop,
 						spanForLoop,
 						slot,
-                        liveComponent,
-                        phxValue,
-                        phxClick,
-                        phxClickAway,
-                        phxChange,
-                        phxSubmit,
-                        phxSubmit,
-                        phxFeedbackFor,
-                        phxDisableWith,
-                        phxTriggerAction,
-                        phxAutoRecover,
-                        phxBlur,
-                        phxFocus,
-                        phxWindowBlur,
-                        phxWindowFocus,
-                        phxKeydown,
-                        phxKeyup,
-                        phxWindowKeydown,
-                        phxWindowKeyup,
-                        phxKey,
-                        phxViewportBottom,
-                        phxViewportTop,
-                        phxMounted,
-                        phxUpdate,
-                        phxRemove,
-                        phxHook,
-                        phxDebounce,
-                        phxThrottle,
-                        phxTrackStatic,
+						liveComponent,
+						phxValue,
+						phxClick,
+						phxClickAway,
+						phxChange,
+						phxSubmit,
+						phxSubmit,
+						phxFeedbackFor,
+						phxDisableWith,
+						phxTriggerAction,
+						phxAutoRecover,
+						phxBlur,
+						phxFocus,
+						phxWindowBlur,
+						phxWindowFocus,
+						phxKeydown,
+						phxKeyup,
+						phxWindowKeydown,
+						phxWindowKeyup,
+						phxKey,
+						phxViewportBottom,
+						phxViewportTop,
+						phxMounted,
+						phxUpdate,
+						phxRemove,
+						phxHook,
+						phxDebounce,
+						phxThrottle,
+						phxTrackStatic,
 						noReplySocket,
 						okSocket,
 						socket
@@ -335,7 +335,7 @@ function activate(context) {
 					context
 				) {
 					//TODO: fix snippet suggesting only after pressing "Del"
-			
+
 					// ;.custom_component => custom_component
 					const regex = /(?<=;.)\w+/;
 					const str = document.lineAt(position).text;
@@ -356,7 +356,7 @@ function activate(context) {
 					const snippetCompletion = new vscode.CompletionItem(`${customComponent}`, vscode.CompletionItemKind.Snippet);
 					snippetCompletion.insertText = new vscode.SnippetString(`<.${customComponent}>$0</.${customComponent}>`);
 					snippetCompletion.detail = `<${customComponent} navigate={~p\"/$1\"}>$0</${customComponent}>`;
-					snippetCompletion.additionalTextEdits =[vscode.TextEdit.delete(triggerCharacter)];
+					snippetCompletion.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
 					return [snippetCompletion];
 				},
