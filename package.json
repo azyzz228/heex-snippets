@@ -2,7 +2,7 @@
   "name": "heex-snippets",
   "displayName": "HEEx Snippets",
   "description": "Write fast HTML inside of .ex files with these snippets when writing Phoenix Application with Elixir.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -20,14 +20,21 @@
     "languages": [
       {
         "id": "elixir",
-        "aliases": ["Elixir", "elixir"],
-        "extensions": [".ex"]
+        "aliases": [
+          "Elixir",
+          "elixir"
+        ],
+        "extensions": [
+          ".ex"
+        ]
       }
     ],
-    "commands": [{
-      "command": "heex-snippets-in-h-sigil.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "heex-snippets-in-h-sigil.helloWorld",
+        "title": "Hello World"
+      }
+    ]
   },
   "bugs": {
     "url": "https://github.com/azyzz228/heex-snippets/issues",
