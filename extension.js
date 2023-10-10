@@ -200,6 +200,20 @@ function activate(context) {
 					phxTrackStatic.detail = 'phx-track-static';
 					phxTrackStatic.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 
+					const noReplySocket = new vscode.CompletionItem("noreply", vscode.CompletionItemKind.Snippet);
+					noReplySocket.insertText = new vscode.SnippetString('{:noreply, socket}');
+					noReplySocket.detail = '{:noreply, socket}';
+					noReplySocket.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const okSocket = new vscode.CompletionItem("ok", vscode.CompletionItemKind.Snippet);
+					okSocket.insertText = new vscode.SnippetString('{:ok, socket}');
+					okSocket.detail = '{:ok, socket}';
+					okSocket.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
+
+					const socket = new vscode.CompletionItem("socket", vscode.CompletionItemKind.Snippet);
+					socket.insertText = new vscode.SnippetString('socket = \n\tsocket\n\t|> $0');
+					socket.detail = 'socket';
+					socket.additionalTextEdits = [vscode.TextEdit.delete(triggerCharacter)];
 					/*
 							For looped HTML snippets
 					*/
@@ -299,7 +313,10 @@ function activate(context) {
                         phxHook,
                         phxDebounce,
                         phxThrottle,
-                        phxTrackStatic
+                        phxTrackStatic,
+						noReplySocket,
+						okSocket,
+						socket
 					];
 				},
 			},
