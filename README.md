@@ -28,8 +28,8 @@ Snippet suggestions are triggered after `;`, so to use the snippets, simply type
 |pe|`<%=  %>`|
 |ln|`<.link navigate={~p"/"}></.link>`|
 |lp|`<.link patch={~p"/"}></.link>`|
-|if|`<%= if %><% end %>`|
-|ifelse|`<%= if %><% else %><% end %>`|
+|if|`<%= if do %><% end %>`|
+|ifelse|`<%= if do %><% else %><% end %>`|
 |for|`<%= for item <- @list_of_items do %> <% end %>`|
 
 ### Simple HTML tags
