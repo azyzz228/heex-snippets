@@ -2,7 +2,7 @@
   "name": "heex-snippets",
   "displayName": "HEEx Snippets",
   "description": "Write fast HTML inside of .ex files with these snippets when writing Phoenix Application with Elixir.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "engines": {
     "vscode": "^1.78.0"
   },
