@@ -61,6 +61,13 @@ Use of `emmet` is assumed for simple tags. Meanwhile, this extension provides th
 Custom component snippets are triggered after `;.`. To generate the tag for custom component, type in `;.CUSTOM_COMPONENT`, there will be auto suggestion for generating `<.CUSTOM_COMPONENT></.CUSTOM_COMPONENT>`. See known issues.
 
 ## Known Issues
+
+TODO:
+- "sa" for `socket.assigns`
+- "iif" - for inline if -> `:if={}`
+- "ifor" - for inline for -> `:for={}`
+
+
 - Custom Function Component suggestion does not appear as you type in but appears when you delete what you have written. So, to effectively use it, to get `<.CUSTOM></.CUSTOM>`, you need to type `;.CUSTOMX` then hit the `delete` / `backspace`. 
 - A lot of HTML tags are not included in this snippet. HTML tags and other Phoenix Framework related snippets will be populated if demanded by community. 
 ## Release Notes
